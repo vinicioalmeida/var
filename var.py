@@ -36,3 +36,6 @@ ax1.text(-0.35,200,"Extreme Low\nreturns")
 ax1.text(0.25,200,"Extreme High\nreturns")
 plt.show()
 
+# V@R
+var95 = np.nanpercentile(portfolioreturndf, 5)
+var95*100
