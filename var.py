@@ -5,8 +5,10 @@ import numpy as np
 import yfinance as yf
 import plotly.graph_objects as go
 
-assets = ['PETR4.SA', 'VALE3.SA', 'ABEV3.SA', 'BBAS3.SA']
-weights = np.array([0.25, 0.25, 0.25, 0.25])
+assets = ['ABEV3.SA', 'CIEL3.SA', 'COGN3.SA', 'EGIE3.SA', 'KLBN11.SA', 
+          'LWSA3.SA', 'MGLU3.SA', 'MRFG3.SA', 'MULT3.SA', 'PETZ3.SA']
+weights = np.array([0.10, 0.10, 0.10, 0.10, 0.10,
+                    0.10, 0.10, 0.10, 0.10, 0.10])
 
 start = '2007-01-01'
 end = '2023-09-06'
