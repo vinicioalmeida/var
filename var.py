@@ -42,3 +42,32 @@ plt.legend()
 # Show the plot
 plt.title('Historical Value at Risk (VaR) Calculation')
 plt.show()
+
+## Some exercises
+
+# Calculate the total portfolio value at the end date
+#total_portfolio_value = (portfolio.iloc[-1] * weights).sum()
+total_portfolio_value = 500000
+var_currency = total_portfolio_value * historical_var / 100
+print(f"Historical VaR at {confidence_level*100}% confidence level: ${var_currency:.2f}")
+
+## 10-day VaR
+trading_days_per_year = 252
+# Scale daily returns to 10 days
+scaled_returns = returns * np.sqrt(10)
+# Calculate the portfolio returns for 10 days
+portfolio_return_10_days = (scaled_returns * weights).sum(axis=1)
+# Calculate the VaR for 10 days
+historical_var_10_days = np.nanpercentile(portfolio_return_10_days, (1 - confidence_level) * 100)
+# Calculate the 10-day VaR in currency amount
+var_10_days_currency = total_portfolio_value * historical_var_10_days / 100
+print(f"10-Day VaR at {confidence_level*100}% confidence level: ${var_10_days_currency:.2f}")
+
+## 10-day Var at 99%
+# Define the confidence level (99%)
+confidence_level_10_days = 0.99
+# Calculate the VaR for 10 days at a 99% confidence level
+historical_var_10_days_99_percent = np.nanpercentile(portfolio_return_10_days, (1 - confidence_level_10_days) * 100)
+# Calculate the 10-day VaR at 99% confidence level in currency amount
+var_10_days_99_percent_currency = total_portfolio_value * historical_var_10_days_99_percent / 100
+print(f"10-Day VaR at {confidence_level_10_days*100}% confidence level: ${var_10_days_99_percent_currency:.2f}")
